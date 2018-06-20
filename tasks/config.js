@@ -1,29 +1,27 @@
 const ASSET_ROOT = 'src'
 const DEST_ROOT = 'public'
-const TEMPLATES_ROOT = `${ASSET_ROOT}/templates`
+//const TEMPLATES_ROOT = `${ASSET_ROOT}/templates`
 
 module.exports = {
     paths: {
         styles: {
-            src: `${ASSET_ROOT}/sass/**/*.scss`,
+            src: `${ASSET_ROOT}/scss/**/*.scss`,
             dest: `${DEST_ROOT}/styles`
         },
         templates: {
-            root: TEMPLATES_ROOT,
-            src: `${TEMPLATES_ROOT}/pages/**/*.edge`,
-            watch: [
-                `${TEMPLATES_ROOT}/**/*.edge`,
-                `${TEMPLATES_ROOT}/data.json`,
-                `${TEMPLATES_ROOT}/helpers.js`
-            ],
-            data: `${TEMPLATES_ROOT}/data.json`,
-            helpers: `${TEMPLATES_ROOT}/helpers.js`,
-            dest: DEST_ROOT
+            src: `${ASSET_ROOT}/template/**/*.html`,
+            dest: `${DEST_ROOT}/template`,
+            watch: `${ASSET_ROOT}/template/**/*.html`
         },
         scripts: {
-            src: `${ASSET_ROOT}/js/main.js`,
+            src: `${ASSET_ROOT}/js/main.jsx`,
             dest: `${DEST_ROOT}/js`,
-            watch: `${ASSET_ROOT}/js/**/*.js`
-        }
+            watch: `${ASSET_ROOT}/js/**/*.jsx`
+        },
+        images: {
+            src: `${ASSET_ROOT}/img/*`,
+            dest: `${DEST_ROOT}/img`,
+            watch: `${ASSET_ROOT}/img/**/*.jpg`
+        },
     }
 }

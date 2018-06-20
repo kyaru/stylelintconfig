@@ -11,7 +11,7 @@ if (process.env.NODE_ENV === 'production') {
 
 module.exports = {
     mode,
-    entry: './src/js/main.js',
+    entry: './src/js/main.jsx',
     output: {
         path: path.resolve(__dirname, 'public'),
         filename: 'bundle.js'
@@ -19,7 +19,7 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.js$/,
+                test: [/\.js$/, /\.jsx$/],
                 exclude: /node_modules/,
                 loader: 'babel-loader'
             }

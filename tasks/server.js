@@ -17,7 +17,8 @@ function reload(done) {
 function serve(done) {
     server.init({
         server: {
-            baseDir: './public'
+            baseDir: './public/',
+            index: 'template/index.html'
         }
     })
     done()
