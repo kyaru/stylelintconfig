@@ -1,0 +1,56 @@
+:root {
+    --main-color2: #ffff00;
+}
+
+main {
+    overflow: hidden;
+    section.main-content {
+        h2.tit {
+            margin: 15px 0;
+            font-size: 30px;
+            color: var(--main-color2);
+            text-align: center;
+        }
+        div.video-area {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            justify-content: center;
+            p {
+                font-size: 30px;
+                color: var(--main-color2);
+            }
+            p.waiting-time {
+                position: absolute;
+                top: 300px;
+                z-index: 5;
+                font-size: 60px;
+            }
+            p.hidden {
+                display: none;
+            }
+            video {
+                position: absolute;
+                z-index: 1;
+                box-sizing: border-box;
+                width: 800px;
+                height: 600px;
+                background: rgba(255, 255, 255, .5);
+                border: 1px solid #cccccc;
+            }
+            p.snapshot {
+                position: absolute;
+                top: 500px;
+                z-index: 5;
+                cursor: pointer;
+                i {
+                    font-size: 60px;
+                }
+            }
+        }
+        div.button-area {
+            button {
+            }
+        }
+    }
+}

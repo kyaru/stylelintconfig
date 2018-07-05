@@ -5,13 +5,12 @@ const DEST_ROOT = 'public'
 module.exports = {
     paths: {
         styles: {
-            src: `${ASSET_ROOT}/scss/**/*.scss`,
-            dest: `${DEST_ROOT}/styles`
+            src: `${ASSET_ROOT}/postcss/**/*.css`,
+            dest: `${DEST_ROOT}/css`
         },
         templates: {
             src: `${ASSET_ROOT}/template/**/*.html`,
-            dest: `${DEST_ROOT}/template`,
-            watch: `${ASSET_ROOT}/template/**/*.html`
+            dest: `${DEST_ROOT}/template`
         },
         scripts: {
             src: `${ASSET_ROOT}/js/main.jsx`,

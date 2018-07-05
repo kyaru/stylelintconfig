@@ -15,7 +15,8 @@ function scripts() {
             errorHandler: notify.onError({
                 title: "webpackBulidError: <%= error.message %>",
                 message: new Date().toLocaleString(),
-                sound: 'Glass'
+                sound: 'Glass',
+                time: 500
             })
         }))
         .pipe(webpack(
@@ -26,7 +27,8 @@ function scripts() {
         .pipe(notify({
             title: 'webpack Transpiled!',
             message: new Date().toLocaleString(),
-            sound: 'Glass'
+            sound: 'Glass',
+            time: 500
         }));
 }
 

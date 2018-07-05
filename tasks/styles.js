@@ -1,40 +1,37 @@
 const gulp = require('gulp')
-const sass = require('gulp-sass')
 const sourcemaps = require('gulp-sourcemaps')
-const cssnano = require('gulp-cssnano')
 const plumber = require('gulp-plumber')
 const notify = require('gulp-notify')
-const autoprefixer = require('gulp-autoprefixer')
-const autoprefixerOptions = {
-    browsers: ['last 2 version', 'ie >= 10']
-};
+const postcss = require('gulp-postcss')
 
 const { paths } = require('./config')
 
 /**
- * SCSS -> CSS
+ * POSTCSS -> CSS
  */
 function styles() {
     return gulp.src(paths.styles.src)
         .pipe(plumber({
             // エラーをハンドル
             errorHandler: notify.onError({
-                title: "scssCompileError: <%= error.message %>",
+                title: "PostCSSCompileError: <%= error.message %>",
                 message: new Date().toLocaleString(),
-                sound: 'Glass'
+                sound: 'Glass',
+                time: 500
             })
         }))
         .pipe(sourcemaps.init())
-        .pipe(sass().on('error', sass.logError))
-        .pipe(autoprefixer(autoprefixerOptions))
-        .pipe(cssnano())
+        .pipe(postcss())
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest(paths.styles.dest))
         .pipe(notify({
-            title: 'Scss Compiled!',
+            title: 'PostCSS Compiled!',
             message: new Date().toLocaleString(),
-            sound: 'Glass'
+            sound: 'Glass',
+            time: 500
         }))
 }
 
 module.exports = styles
+
+

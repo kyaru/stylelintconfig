@@ -21,7 +21,7 @@ function watch() {
 /**
  * 開発用ビルド
  */
-gulp.task('dev', gulp.series(
+gulp.task('default', gulp.series(
     clean, gulp.parallel(styles, templates, scripts, images), serve, watch
 ));
 

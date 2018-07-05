@@ -11,14 +11,16 @@ function templates() {
             errorHandler: notify.onError({
                 title: "htmlDestError: <%= error.message %>",
                 message: new Date().toLocaleString(),
-                sound: 'Glass'
+                sound: 'Glass',
+                time: 500
             })
         }))
         .pipe(gulp.dest(paths.templates.dest))
         .pipe(notify({
             title: 'html Dested!',
             message: new Date().toLocaleString(),
-            sound: 'Glass'
+            sound: 'Glass',
+            time: 500
         }));
 }
 
