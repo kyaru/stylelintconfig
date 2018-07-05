@@ -1,22 +1,37 @@
 const gulp = require('gulp')
-const sass = require('gulp-sass')
 const sourcemaps = require('gulp-sourcemaps')
-const cssnano = require('gulp-cssnano')
 const plumber = require('gulp-plumber')
+const notify = require('gulp-notify')
+const postcss = require('gulp-postcss')
 
 const { paths } = require('./config')
 
 /**
- * SCSS -> CSS
+ * POSTCSS -> CSS
  */
 function styles() {
     return gulp.src(paths.styles.src)
-        .pipe(plumber())
+        .pipe(plumber({
+            // エラーをハンドル
+            errorHandler: notify.onError({
+                title: "PostCSSCompileError: <%= error.message %>",
+                message: new Date().toLocaleString(),
+                sound: 'Glass',
+                time: 500
+            })
+        }))
         .pipe(sourcemaps.init())
-        .pipe(sass().on('error', sass.logError))
-        .pipe(cssnano())
+        .pipe(postcss())
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest(paths.styles.dest))
+        .pipe(notify({
+            title: 'PostCSS Compiled!',
+            message: new Date().toLocaleString(),
+            sound: 'Glass',
+            time: 500
+        }))
 }
 
 module.exports = styles
+
+

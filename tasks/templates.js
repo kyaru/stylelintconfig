@@ -1,35 +1,27 @@
 const gulp = require('gulp')
-const webpack = require('webpack-stream')
+const { paths } = require('./config')
 
 const plumber = require('gulp-plumber')
 const notify = require('gulp-notify')
-const { paths } = require('./config')
 
-/**
- * JS周りはWebpackに委譲
- */
-function scripts() {
-    return gulp.src(paths.scripts.src)
+function templates() {
+    return gulp.src(paths.templates.src)
         .pipe(plumber({
             // エラーをハンドル
             errorHandler: notify.onError({
-                title: "webpackBulidError: <%= error.message %>",
+                title: "htmlDestError: <%= error.message %>",
                 message: new Date().toLocaleString(),
                 sound: 'Glass',
                 time: 500
             })
         }))
-        .pipe(webpack(
-            require('../webpack.config'),
-            require('webpack')
-        ))
-        .pipe(gulp.dest(paths.scripts.dest))
+        .pipe(gulp.dest(paths.templates.dest))
         .pipe(notify({
-            title: 'webpack Transpiled!',
+            title: 'html Dested!',
             message: new Date().toLocaleString(),
             sound: 'Glass',
             time: 500
         }));
 }
 
-module.exports = scripts
+module.exports = templates
